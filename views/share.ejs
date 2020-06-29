@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sikorskyPhotos</title>
+    <meta name="author" content="MY NAME">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="indexbg">
+    <div class="indexblock">
+        <div class="container">
+            <h1 class="mainlogo">sikorskyPhotos</h1>
+            <p>Enter user login to share image with</p>
+            <form action="/gallery/share" class="forms" method="post">User login:<br>
+                <input type="hidden" name="docid" value="<%= docid %>">
+                <input type="text" class="textbox" name="shareUsername" required="required"><br>
+                <div class="buttons">
+                    <input class="button" type="submit" value="Share">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bottom">
+        <a class="regbutton" href="/gallery">To gallery</a>
+    </div>
+</div>
+</body>
+</html>

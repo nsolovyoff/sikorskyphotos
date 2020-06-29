@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<% const title = "Photo panel";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <%- include partials/header %>
+    <div class="documents">
+        <h1 class="categoryname">Your albums <%if (albums.length == 0) {
+                %>
+                <br><span class="notFound">You do not have any albums. Create your first album by clicking on the plus sign in the lower right corner of the screen.</span>
+                <%}%></h1>
+        <div class="row">
+            <div class="column">
+                <%
+                if (albums.length != 0) {
+                for(let i = 0; i < Math.ceil(albums.length / 3); i++) {%>
+                <a href="../albums/<%= albums[i].id %>"><img src="images/album.png" style="width:100%"><%=albums[i].name%></a>
+                <%}
+                }%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(albums.length / 3); i < Math.ceil(albums.length / 3 * 2); i++) {%>
+                <a href="../albums/<%= albums[i].id %>"><img src="images/album.png" style="width:100%"><%=albums[i].name%></a>
+                <%}%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(albums.length / 3 * 2); i < albums.length; i++) {%>
+                <a href="../albums/<%= albums[i].id %>"><img src="images/album.png" style="width:100%"><%=albums[i].name%></a>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bottomPages">
+        <% if(page != 1) {%>
+        <a class='pages-element' href="/albums?page=<%= Number(page) - 1%>"> << </a>
+        <% } %>
+        <span class='pages-element'> Сторінка <%= page %> з <%= pages %> </span>
+        <%if(page != pages) { %>
+        <a class='pages-element' href="/gallery?page=<%= Number(page) + 1%>"> >> </a>
+        <% } %>
+    </div>
+
+    <div id="addbutton">
+        <a id="plus" href="/albums/addAlbum">+</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<% const title = "sikorskyPhotos";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <% include partials/header %>
+    <div class="profileblock">
+        <div class="container">
+            <div id="usersheader">
+                <h1>Users</h1>
+            </div>
+            <table border='1'>
+                <tr>
+                    <th>Login</th>
+                    <th>Fullname</th>
+                    <th>Registered</th>
+                </tr>
+                <% for (let user of users) {%>
+                <tr>
+                    <td><a href="/users/<%= user.login %>"><%= user.login %></a></td>
+                    <td><%= user.fullname %></td>
+                    <td><%= user.registeredAt %></td>
+                </tr>
+                <%}%>
+            </table>
+
+        </div>
+    </div>
+    <div class="bottom">
+        <a href="/gallery">To gallery</a>
+    </div>
+</div>
+</body>
+</html>

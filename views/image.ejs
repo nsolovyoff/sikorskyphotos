@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<% const title = "sikorskyPhotos";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <% include partials/header %>
+    <div class="outerdiv">
+    <div class="polaroid">
+        <img src="<%= image.img %>" alt="5 Terre" width="100%">
+        <div class="contain">
+            <p><%= image.name %></p>
+
+        </div>
+        <% if (owner == 1) { %>
+        <form class="deleteForm" action="delete" method="post" id="delete"  >
+            <input type="hidden" name="docid" value="<%= image.id %>">
+            <input type="submit" value="Delete">
+        </form>
+        <%}%>
+    </div>
+    </div>
+    <% if (owner == 1) { %>
+    <form action="/gallery/sharePage" method="post">
+        <input type="hidden" name="docid" value="<%= image.id %>">
+        <input type="submit" class="editbutton" value=" Share">
+    </form>
+    <%}%>
+    <div class="bottom">
+        <a href="/gallery">To gallery</a>
+    </div>
+</div>
+</body>
+</html>

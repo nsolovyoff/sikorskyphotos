@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<% const title = "sikorskyPhotos";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <% include partials/header %>
+    <div class="profileblock">
+        <div class="container">
+            <div id="imgblock">
+                <img src="../images/user.png" alt="vono" width="200" height="200">
+            </div>
+            <div id="profileinfoblock">
+                <h1><%= usr.fullname %></h1>
+                <h4>Registration date:
+                <br><%= usr.registeredAt %></h4>
+
+            </div>
+            <div class="bioblock"> <%= usr.bio %> </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <a href="/gallery">To gallery</a>
+    </div>
+</div>
+</body>
+</html>

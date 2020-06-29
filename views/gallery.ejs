@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<% const title = "Photo panel";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <%- include partials/header %>
+    <div class="documents">
+            <h1 class="categoryname">Your photos     <span class="searchQuery"><%= searchQuery %></span> <%if (imagesOwned.length == 0) {
+                if(searchQuery) {%>
+                <br><span class="notFound">Nothing found for your search</span>
+                <%} else { %>
+                <br><span class="notFound">You do not have any photos. Upload your first photo by clicking on the plus sign in the lower right corner of the screen.</span>
+                <%}
+                }%> </h1>
+        <div class="row">
+            <div class="column">
+                <%
+                if (imagesOwned.length != 0) {
+                for(let i = 0; i < Math.ceil(imagesOwned.length / 3); i++) {%>
+                <a href="/gallery/<%= imagesOwned[i].id %>"><img src="<%= imagesOwned[i].img %>" style="width:100%"></a>
+                <%}
+                }%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(imagesOwned.length / 3); i < Math.ceil(imagesOwned.length / 3 * 2); i++) {%>
+                <a href="/gallery/<%= imagesOwned[i].id %>"><img src="<%= imagesOwned[i].img %>" style="width:100%"></a>
+                <%}%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(imagesOwned.length / 3 * 2); i < imagesOwned.length; i++) {%>
+                <a href="/gallery/<%= imagesOwned[i].id %>"><img src="<%= imagesOwned[i].img %>" style="width:100%"></a>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
+    <div class="documents">
+        <h1 class="categoryname">Shared with you</h1>
+        <div class="row">
+            <div class="column">
+                <%
+                if (imagesAccessible.length != 0) {
+                for(let i = 0; i < Math.ceil(imagesAccessible.length / 3); i++) {%>
+                <a href="/gallery/<%= imagesAccessible[i].id %>"><img src="<%= imagesAccessible[i].img %>" style="width:100%"></a>
+                <%}
+                }%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(imagesAccessible.length / 3); i < Math.ceil(imagesAccessible.length / 3 * 2); i++) {%>
+                <a href="/gallery/<%= imagesAccessible[i].id %>"><img src="<%= imagesAccessible[i].img %>" style="width:100%"></a>
+                <%}%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(imagesAccessible.length / 3 * 2); i < imagesAccessible.length; i++) {%>
+                <a href="/gallery/<%= imagesAccessible[i].id %>"><img src="<%= imagesAccessible[i].img %>" style="width:100%"></a>
+                <%}%>
+            </div>
+        </div>
+</div>
+    <div class="bottomPages">
+        <% if(page != 1) {%>
+        <a class='pages-element' href="/gallery?page=<%= Number(page) - 1%><%if (searchQuery) {%>&searchId=<%= searchQuery %><%}%>"> << </a>
+        <% } %>
+        <span class='pages-element'> Page <%= page %> of <%= pages %> </span>
+        <%if(page != pages) { %>
+        <a class='pages-element' href="/gallery?page=<%= Number(page) + 1%><%if (searchQuery) {%>&searchId=<%= searchQuery %><%}%>"> >> </a>
+        <% } %>
+    </div>
+
+    <form class="bottomSearch" action="/gallery" method="get">
+        <input class="searchField" type="text" name="searchId" required="required">
+        <input type="image" src="/images/ic_search_white_24px.svg" alt="Submit" />
+    </form>
+
+    <div id="addbutton">
+        <a id="plus" href="/gallery/add">+</a>
+    </div>
+</div>
+</body>
+</html>

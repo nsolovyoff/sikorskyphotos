@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<% const title = "Photo panel";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <%- include partials/header %>
+    <div class="documents">
+        <h1 class="categoryname"><%=album.name%> </h1><form  action="" method="post" id="delete"  >
+            <input type="hidden" name="id" value="<%= album.id %>">
+            <input type="submit" value="Видалити">
+        </form>
+        <div class="row">
+            <div class="column">
+                <%
+                if (images.length != 0) {
+                for(let i = 0; i < Math.ceil(images.length / 3); i++) {%>
+                <a href="/gallery/<%= images[i].id %>"><img src="<%= images[i].img %>" style="width:100%"></a>
+                <%}
+                }%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(images.length / 3); i < Math.ceil(images.length / 3 * 2); i++) {%>
+                <a href="/gallery/<%= images[i].id %>"><img src="<%= images[i].img %>" style="width:100%"></a>
+                <%}%>
+            </div>
+            <div class="column">
+                <%for(let i = Math.ceil(images.length / 3 * 2); i < images.length; i++) {%>
+                <a href="/gallery/<%= images[i].id %>"><img src="<%= images[i].img %>" style="width:100%"></a>
+                <%}%>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="bottomPages">
+        <% if(page != 1) {%>
+        <a class='pages-element' href="/album?page=<%= Number(page) - 1%>"> << </a>
+        <% } %>
+        <span class='pages-element'> Сторінка <%= page %> з <%= pages %> </span>
+        <%if(page != pages) { %>
+        <a class='pages-element' href="/album?page=<%= Number(page) + 1%>"> >> </a>
+        <% } %>
+    </div>
+
+    <div id="addbutton">
+        <a id="plus" href="/add">+</a>
+    </div>
+</div>
+</body>
+</html>

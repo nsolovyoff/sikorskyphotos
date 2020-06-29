@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sikorskyPhotos</title>
+    <meta name="author" content="MY NAME">
+    <link type="text/css" href="/stylesheets/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="indexbg">
+    <div class="indexblock">
+        <div class="container">
+            <h1 class="mainlogo">sikorskyPhotos</h1>
+            <p>Fill in all required fields</p>
+            <form action="/auth/login" class="forms" method="post">Логін:<br>
+                <label>
+                    <input type="text" class="textbox" name="username" required="required">
+                </label><br>
+                Пароль:<br>
+                <label>
+                    <input type="password" class="textbox" name="password" required="required">
+                </label><br>
+                <div class="buttons">
+                    <input class="button" type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bottom">
+        <a class="regbutton" href="/auth/register">Register</a>
+    </div>
+</div>
+</body>
+</html>
+<!--minlength="8"-->

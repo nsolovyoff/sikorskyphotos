@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<% const title = "Add an album";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <% include partials/header %>
+    <div id="addblock">
+        <div class="container">
+            <div id="usersheader">
+                <h1>Add album</h1>
+            </div>
+            <div class="bioblock">
+                <form action="addAlbum" class="ui-form" method="post">
+                    <div class="form-row">
+                        <input type="text" name="name" required="required"><label for="name">Name</label>
+                    </div>
+                    <br>
+                    Choose an image:<br>
+                    <select class ="selector" name="images" multiple>
+                        <%for(let image of images) {%>
+                        <option value= "<%=image._id%>"><%=image.name%></option>
+                        <%}%>
+                    </select>
+                    <p><input type="submit" value="Додати"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <a href="/albums">To gallery</a>
+    </div>
+</div>
+</body>
+</html>

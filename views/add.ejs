@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<% const title = "Add image";%>
+<% include partials/head %>
+<body>
+<div class="indexbg">
+    <% include partials/header %>
+    <div id="addblock">
+        <div class="container">
+            <div id="usersheader">
+                <h1>Add image</h1>
+            </div>
+            <div class="bioblock">
+                <form action="add" class="ui-form" method="post" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <input type="text" name="name" required="required"><label for="name">Name</label>
+                    </div>
+                    <input type="file" name="image" required="required">
+                    <p><input type="submit" value="Add"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <a href="/gallery">To gallery</a>
+    </div>
+</div>
+</body>
+</html>
